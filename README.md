@@ -1,8 +1,8 @@
 # Full Stack Example Project
 
-A minimal React + Flask starter for CSHS projects. Click **Use this template**
-on GitHub to start a new project from it. Everything you need to run locally,
-test, and auto-deploy to the club server is already wired up.
+A minimal React + Flask starter project, default template unless using custom stack 
+(check in w/ leadership first though). Click **Use this template**
+on GitHub to start a new project from it.
 
 ```
 frontend/   React 19 + TypeScript, built with Vite, served by nginx in production
