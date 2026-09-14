@@ -1,0 +1,5 @@
+# Normalize line endings so files edited on Windows don't break on the server.
+* text=auto
+*.sh text eol=lf
+Makefile text eol=lf
+Dockerfile text eol=lf

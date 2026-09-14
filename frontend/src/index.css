@@ -1,0 +1,19 @@
+:root {
+  font-family: system-ui, sans-serif;
+  color-scheme: light dark;
+}
+
+body {
+  margin: 0;
+  display: grid;
+  place-items: center;
+  min-height: 100vh;
+}
+
+main {
+  text-align: center;
+}
+
+.error {
+  color: #c0392b;
+}
