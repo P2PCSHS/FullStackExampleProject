@@ -3,7 +3,7 @@
  *
  * In development, Vite proxies "/api" to Flask (see vite.config.ts).
  * In production, nginx does the same (see nginx.conf), so the base URL
- * is simply "/api" everywhere unless VITE_API_URL overrides it.
+ * is just "/api" everywhere unless VITE_API_URL overrides it.
  */
 const BASE_URL = import.meta.env.VITE_API_URL ?? '/api'
 

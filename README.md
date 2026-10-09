@@ -1,6 +1,6 @@
 # Full Stack Example Project
 
-A minimal React + Flask starter project, default template unless using custom stack 
+A minimal React + Flask starter project, default template unless using custom stack
 (check in w/ leadership first though). Click **Use this template**
 on GitHub to start a new project from it.
 
@@ -97,21 +97,23 @@ Note: both docker commands may need root privileges (prefix command with `sudo`)
 The app deploys automatically to the club server whenever CI passes on
 `main`. One-time setup for a new project:
 
-**On the server**
+**On the club server** (ask leadership; they run these as root)
 
-1. Clone the repo somewhere, e.g. `/srv/my-project`.
-2. Create `.env` there and set `APP_PORT` to a port nobody else is using.
-3. Run `./scripts/deploy.sh` once by hand to confirm it works.
-4. Point the server's reverse proxy (or your DNS/port setup) at that port.
+1. `add-site <name>` reserves `https://<name>.p2pcshs.org`, picks a free port,
+   and prints a deploy key plus the exact commands for the next steps.
+2. Clone the repo as the `deploy` user into `/home/deploy/<name>`.
+3. Create `.env` there with `APP_PORT=<the port from step 1>`.
+4. Run `./scripts/deploy.sh` once by hand to confirm it works. The site is
+   live at `https://<name>.p2pcshs.org` as soon as the containers are up.
 
 **On GitHub** (Settings → Secrets and variables → Actions)
 
-| Secret        | Value                                              |
-| ------------- | -------------------------------------------------- |
-| `DEPLOY_HOST` | server hostname or IP                              |
-| `DEPLOY_USER` | SSH user on the server                             |
-| `DEPLOY_KEY`  | private SSH key whose public half is authorized    |
-| `DEPLOY_PATH` | absolute path of the clone, e.g. `/srv/my-project` |
+| Secret        | Value                                                  |
+| ------------- | ------------------------------------------------------ |
+| `DEPLOY_HOST` | server IP (printed by `add-site`)                      |
+| `DEPLOY_USER` | `deploy`                                               |
+| `DEPLOY_KEY`  | the private key printed by `add-site`                  |
+| `DEPLOY_PATH` | absolute path of the clone, e.g. `/home/deploy/<name>` |
 
 The deploy workflow SSHes in and runs `scripts/deploy.sh`, which pulls the
 latest `main`, rebuilds the containers, and waits for the backend health check.

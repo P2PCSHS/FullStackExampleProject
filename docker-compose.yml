@@ -14,6 +14,8 @@ services:
     build: ./frontend
     restart: unless-stopped
     ports:
-      - "${APP_PORT:-8080}:80"
+      # Bound to localhost: on the server Caddy is the only public entry
+      # point, so the app cannot be reached on the raw IP bypassing HTTPS.
+      - "127.0.0.1:${APP_PORT:-8080}:80"
     depends_on:
       - backend
